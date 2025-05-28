@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+
+const prisma = new PrismaClient();
 
 @Injectable()
 export class AdvisorService {
@@ -22,8 +25,18 @@ export class AdvisorService {
       },
     );
 
+    const answer = response.data.choices[0].message?.content || 'No answer.';
+
+    await prisma.question.create({
+      data: {
+        userId: 'static-user-id', // replace with actual user later
+        question,
+        answer,
+      },
+    });
+
     return {
-      answer: response.data.choices[0].message?.content || 'No answer.',
+      answer,
     };
   }
 }
