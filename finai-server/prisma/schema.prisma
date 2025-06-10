@@ -13,15 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-
-  Question Question[]
-}
-
 model Question {
   id        String   @id @default(uuid())
   userId    String
@@ -30,4 +21,38 @@ model Question {
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
+}
+
+model Stock {
+  id      Int      @id @default(autoincrement())
+  symbol  String
+  name    String
+  price   Float
+  date    DateTime
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  question      String
+  name          String?
+  createdAt     DateTime @default(now())
+  preferences   Preference[]
+  questions     Question[]
+  adviceEntries Advice[]
+}
+
+model Preference {
+  id      Int    @id @default(autoincrement())
+  stock   String
+  userId  String
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model Advice {
+  id      Int      @id @default(autoincrement())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  content String
+  date    DateTime @default(now())
 }
