@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import heroimage from "../../assets/hero-image.png";
 import "./styles.scss";
 import { Button } from "@carbon/react";
