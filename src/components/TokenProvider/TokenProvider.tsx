@@ -13,7 +13,8 @@ const TIMEOUT_DURATION = 2 * 3600 * 1000; // 2 hours in milliseconds
 
 const getStoredLoginStatus = () => localStorage.getItem("isLoggedIn");
 const getStoredToken = () => localStorage.getItem("jwt");
-const getStoredExpiry = () => parseInt(localStorage.getItem("jwtExpiry"), 10);
+const getStoredExpiry = () =>
+  parseInt(localStorage.getItem("jwtExpiry") ?? "0", 10);
 
 const setToken = (token: string, expiresIn = 3600) => {
   localStorage.setItem("jwt", token);

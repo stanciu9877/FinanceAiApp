@@ -1,17 +1,17 @@
-import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
+import Button from "@mui/material/Button";
+import { CheckCircle } from "lucide-react";
 
 interface PricingCardProps {
-  title: string
-  price: string
-  period: string
-  description: string
-  features: string[]
-  buttonText: string
-  popular?: boolean
+  title: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  buttonText: string;
+  popular?: boolean;
 }
 
-export default function PricingCard({
+export const PricingCard = ({
   title,
   price,
   period,
@@ -19,12 +19,16 @@ export default function PricingCard({
   features,
   buttonText,
   popular = false,
-}: PricingCardProps) {
+}: PricingCardProps) => {
   return (
     <div
       className={`
       bg-white rounded-lg shadow-sm border 
-      ${popular ? "border-emerald-500 ring-2 ring-emerald-500 ring-opacity-20" : "border-slate-200"} 
+      ${
+        popular
+          ? "border-emerald-500 ring-2 ring-emerald-500 ring-opacity-20"
+          : "border-slate-200"
+      } 
       p-8 relative
     `}
     >
@@ -40,8 +44,10 @@ export default function PricingCard({
       </div>
       <p className="text-slate-600 mb-6">{description}</p>
       <Button
-        className={`w-full mb-6 ${popular ? "bg-emerald-500 hover:bg-emerald-600" : ""}`}
-        variant={popular ? "default" : "outline"}
+        className={`w-full mb-6 ${
+          popular ? "bg-emerald-500 hover:bg-emerald-600" : ""
+        }`}
+        variant={popular ? "text" : "outlined"}
       >
         {buttonText}
       </Button>
@@ -54,5 +60,5 @@ export default function PricingCard({
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};

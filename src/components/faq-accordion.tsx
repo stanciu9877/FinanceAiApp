@@ -1,6 +1,10 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
+import AccordionDetails from "@mui/material/AccordionDetails";
 
-export default function FAQAccordion() {
+export const FAQAccordion = () => {
   const faqs = [
     {
       question: "How accurate are the AI stock predictions?",
@@ -27,16 +31,22 @@ export default function FAQAccordion() {
       answer:
         "After your 14-day free trial, you'll be prompted to select a subscription plan to continue using the service. We won't automatically charge you - you'll need to explicitly choose a plan.",
     },
-  ]
+  ];
 
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <>
       {faqs.map((faq, index) => (
-        <AccordionItem key={index} value={`item-${index}`}>
-          <AccordionTrigger className="text-left font-medium">{faq.question}</AccordionTrigger>
-          <AccordionContent className="text-slate-600">{faq.answer}</AccordionContent>
-        </AccordionItem>
+        <Accordion key={index} className="w-full">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography component="span">{faq.question}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>{faq.answer}</AccordionDetails>
+        </Accordion>
       ))}
-    </Accordion>
-  )
-}
+    </>
+  );
+};

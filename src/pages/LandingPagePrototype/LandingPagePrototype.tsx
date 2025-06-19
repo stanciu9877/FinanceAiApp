@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import {
   CheckCircle,
   TrendingUp,
@@ -7,12 +5,15 @@ import {
   Bell,
   Star,
   ArrowRight,
+  Link,
 } from "lucide-react";
-import TestimonialCard from "@/components/testimonial-card";
-import PricingCard from "@/components/pricing-card";
-import FeatureCard from "@/components/feature-card";
-import FAQAccordion from "@/components/faq-accordion";
-import StockDemo from "@/components/stock-demo";
+
+import Button from "@mui/material/Button";
+import { StockDemo } from "@/components/stock-demo";
+import { FeatureCard } from "@/components/feature-card";
+import { TestimonialCard } from "@/components/testimonial-card";
+import { PricingCard } from "@/components/pricing-card";
+import { FAQAccordion } from "@/components/faq-accordion";
 
 export default function LandingPagePrototype() {
   return (
@@ -32,16 +33,12 @@ export default function LandingPagePrototype() {
               your favorite stocks with our AI assistant.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-emerald-500 hover:bg-emerald-600 text-white"
-              >
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
-                size="lg"
-                variant="outline"
+                variant="outlined"
                 className="text-white border-white hover:bg-white/10"
               >
                 Watch Demo
@@ -187,10 +184,7 @@ export default function LandingPagePrototype() {
           </div>
 
           <div className="mt-12 text-center">
-            <Button
-              size="lg"
-              className="bg-emerald-500 hover:bg-emerald-600 text-white"
-            >
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
               Start Your Journey
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -319,7 +313,7 @@ export default function LandingPagePrototype() {
           <div className="mt-12 text-center">
             <p className="text-slate-600 mb-4">Still have questions?</p>
             <Button
-              variant="outline"
+              variant="outlined"
               className="border-emerald-500 text-emerald-500 hover:bg-emerald-50"
             >
               Contact Support
@@ -339,16 +333,12 @@ export default function LandingPagePrototype() {
             our AI assistant.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-emerald-500 hover:bg-emerald-600 text-white"
-            >
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
               Start Free Trial
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
-              size="lg"
-              variant="outline"
+              variant="outlined"
               className="text-white border-white hover:bg-white/10"
             >
               Schedule Demo
